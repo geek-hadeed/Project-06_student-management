@@ -17,7 +17,13 @@ class Student {
   }
 }
 
-const randomNumber: number = Math.floor(10000 + Math.random() * 7000);
+// let randomNumber: number = Math.floor(10000 + Math.random() * 7000);
+
+function randomNumber(): number {
+    const min = 10000;
+    const max = 99999;
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+  }
 
 let myBalance: number = 0;
 
@@ -50,8 +56,8 @@ do {
         {
             if (trimmedName !== "") 
             {
-                let studentId = randomNumber;
-                let fees = 0;
+                let studentId = randomNumber()
+                let fees = 0
                 console.log("\n\t\tYou Account Is Created Now");
                 console.log(`*******************  Welcome  ${trimmedName.toUpperCase()}  *******************************`);
 
@@ -62,7 +68,7 @@ do {
                 choices: ["Html", "Css", "JavaScript", "NextJs"],
                 });
 
-                switch (course) 
+                switch (course.course) 
                 {
                     case "Html":
                     fees = 2000;

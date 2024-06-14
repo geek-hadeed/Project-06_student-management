@@ -1,3 +1,4 @@
+#! /usr/bin/env node
 import inquirer from "inquirer";
 class Student {
     stdId;
@@ -11,7 +12,12 @@ class Student {
         this.fees = fees;
     }
 }
-const randomNumber = Math.floor(10000 + Math.random() * 7000);
+// let randomNumber: number = Math.floor(10000 + Math.random() * 7000);
+function randomNumber() {
+    const min = 10000;
+    const max = 99999;
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
 let myBalance = 0;
 let contineEnrollment = true;
 let studentList = [];
@@ -34,7 +40,7 @@ do {
         let stdNameCheck = studentList.map((obj) => obj.stdName);
         if (stdNameCheck.includes(trimmedName) === false) {
             if (trimmedName !== "") {
-                let studentId = randomNumber;
+                let studentId = randomNumber();
                 let fees = 0;
                 console.log("\n\t\tYou Account Is Created Now");
                 console.log(`*******************  Welcome  ${trimmedName.toUpperCase()}  *******************************`);
@@ -44,7 +50,7 @@ do {
                     message: "Select Your Course:",
                     choices: ["Html", "Css", "JavaScript", "NextJs"],
                 });
-                switch (course) {
+                switch (course.course) {
                     case "Html":
                         fees = 2000;
                         break;
